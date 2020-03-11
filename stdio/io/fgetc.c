@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-03-11 21:33:35
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-03-11 21:43:22
+ * @LastEditTime : 2020-03-11 21:52:38
  * @Description  : fgetc.c
  * @FilePath     : /linux_c/stdio/io/fgetc.c
  */
@@ -14,7 +14,11 @@
 int main(int argc, char **argv)
 {
     FILE *fp;
-    int count;
+    int count = 0;
+    if(argc < 2){
+        fprintf(stderr,"Usage...\n");
+        exit(1);
+    }
 
     fp = fopen(argv[1],"r");
     if(fp == NULL){
