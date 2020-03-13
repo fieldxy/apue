@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-03-12 21:23:25
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-03-12 21:30:31
+ * @LastEditTime : 2020-03-13 10:19:50
  * @Description  : In User Settings Edit>
  * @FilePath     : /linux_c/stdio/io/fflush.c
  */
@@ -22,12 +22,7 @@ int main()
 
     printf("After While()\n");
 ***/
-    /***
-     * 
-     * 
-     * 
-     * 
-     * */
+
     printf("Before While()");
     fflush(stdout);
 
