@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-03-14 12:55:26
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-03-14 17:58:32
+ * @LastEditTime : 2020-03-14 18:02:01
  * @Description  : In User Settings Edit
  * @FilePath     : /linux_c/apue/stdio/io/getline.c
  */
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     
     /**
      *  非常必须 会出现段错误
-     * 
+     *  内存泄漏
      */
     
     linebuf = NULL;
@@ -45,5 +45,6 @@ int main(int argc, char **argv)
     }
     
     fclose(fp);
+    //free(linebuf); //释放一块空间
     exit(0);
 }
