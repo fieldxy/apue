@@ -4,6 +4,15 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
-  glob.c
+  dir.c
+D:\MyGit\apue\dir.c(14,3): warning : implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+D:\MyGit\apue\dir.c(14,3): warning :    exit(1);
+D:\MyGit\apue\dir.c(14,3): warning :    ^~~~
+D:\MyGit\apue\dir.c(14,3): warning : incompatible implicit declaration of built-in function ‘exit’
+D:\MyGit\apue\dir.c(14,3): message : include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+D:\MyGit\apue\dir.c(26,2): warning : incompatible implicit declaration of built-in function ‘exit’
+D:\MyGit\apue\dir.c(26,2): warning :   exit(0);
+D:\MyGit\apue\dir.c(26,2): warning :   ^~~~
+D:\MyGit\apue\dir.c(26,2): message : include ‘<stdlib.h>’ or provide a declaration of ‘exit’
   正在链接对象
-  apue.vcxproj -> C:\MyGit\apue\bin\x64\Debug\apue.out
+  apue.vcxproj -> D:\MyGit\apue\bin\x64\Debug\apue.out
