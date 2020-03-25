@@ -1,1 +1,1 @@
-g++ -o "/root/projects/apue/bin/x64/Debug/apue.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/apue/obj/x64/Debug/dir.o
+g++ -o "/root/projects/apue/bin/x64/Debug/apue.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/apue/obj/x64/Debug/mydu.o
