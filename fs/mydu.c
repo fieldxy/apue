@@ -12,8 +12,16 @@
 
 static path_noloop(const char *path)
 {
-	strrchr()
+	char* pos;
+	pos = strrchr(path, '/');
+	if (pos = NULL) {
+		exit(1);
+	}
+	if (strcmp(pos + 1, ".") == 0 || strcmp(pos + 1, "..") == 0)
+		return 0;
+	return 1;
 }
+
 static int64_t mydu(const char* path)
 {
 	struct stat statres;
