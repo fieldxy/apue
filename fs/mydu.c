@@ -1,3 +1,11 @@
+/*
+ * @Author       : fieldxy
+ * @Date         : 2020-03-25 23:15:44
+ * @LastEditors  : fieldxy
+ * @LastEditTime : 2020-03-25 23:45:48
+ * @Description  : In User Settings Edit
+ * @FilePath     : \apue\fs\mydu.c
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
@@ -17,7 +25,7 @@ static path_noloop(const char *path)
 	if (pos = NULL) {
 		exit(1);
 	}
-	if (strcmp(pos + 1, ".") == 0 || strcmp(pos + 1, "..") == 0)
+	if ((strcmp(pos + 1, ".") == 0) || (strcmp(pos + 1, "..") == 0))
 		return 0;
 	return 1;
 }
@@ -26,7 +34,8 @@ static int64_t mydu(const char* path)
 {
 	struct stat statres;
 	char nextpath[PATHSIZE];
-	int i, sum;
+	int i;
+    int64_t sum;
 	glob_t globres;
 
 	if (lstat(path, &statres) < 0) {
@@ -35,7 +44,7 @@ static int64_t mydu(const char* path)
 	}
 
 	if (!S_ISDIR(statres.st_mode))
-		return statres.st_blocks/2;
+		return statres.st_blocks;
 
 	// /a/b/c/d/e/f
 	strncpy(nextpath, path, PATHSIZE);
@@ -46,15 +55,17 @@ static int64_t mydu(const char* path)
 	strncat(nextpath, "/.*", PATHSIZE);
 	glob(nextpath, GLOB_APPEND, NULL, &globres);
 
+    sum = 0;
+
 	for (i = 0; i <globres.gl_pathc; i++)
 	{
 		if(path_noloop(globres.gl_pathv[i]))
-		sum+= mydu(globres.gl_pathv[i]);
+		    sum += mydu(globres.gl_pathv[i]);
 	}
 
 	sum += statres.st_blocks;
 
-	return sum / 2;
+	return sum;
 }
 
 int main(int argc, char** argv)
@@ -64,7 +75,7 @@ int main(int argc, char** argv)
 		exit(1);
 	}
 
-	printf("%ld\n",mydu(argv[1]));
+	printf("%lld\n",mydu(argv[1])/2);
 
 
 	exit(0);
