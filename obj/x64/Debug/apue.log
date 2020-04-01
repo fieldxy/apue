@@ -4,22 +4,12 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
-  mydu.c
-D:\MyGit\apue\fs\mydu.c(13,8): warning : return type defaults to ‘int’ [-Wimplicit-int]
-D:\MyGit\apue\fs\mydu.c(13,8): warning :  static path_noloop(const char *path)
-D:\MyGit\apue\fs\mydu.c(13,8): warning :         ^~~~~~~~~~~
-D:\MyGit\apue\fs\mydu.c(17,6): warning : suggest parentheses around assignment used as truth value [-Wparentheses]
-D:\MyGit\apue\fs\mydu.c(17,6): warning :   if (pos = NULL) {
-D:\MyGit\apue\fs\mydu.c(17,6): warning :       ^~~
-D:\MyGit\apue\fs\mydu.c(32,6): warning : implicit declaration of function ‘lstat’; did you mean ‘fstat’? [-Wimplicit-function-declaration]
-D:\MyGit\apue\fs\mydu.c(32,6): warning :   if (lstat(path, &statres) < 0) {
-D:\MyGit\apue\fs\mydu.c(32,6): warning :       ^~~~~
-D:\MyGit\apue\fs\mydu.c(32,6): warning :       fstat
-D:\MyGit\apue\fs\mydu.c(52,9): warning : conversion to ‘int’ from ‘int64_t {aka long int}’ may alter its value [-Wconversion]
-D:\MyGit\apue\fs\mydu.c(52,9): warning :    sum+= mydu(globres.gl_pathv[i]);
-D:\MyGit\apue\fs\mydu.c(52,9): warning :          ^~~~
-D:\MyGit\apue\fs\mydu.c(55,9): warning : conversion to ‘int’ from ‘__blkcnt_t {aka long int}’ may alter its value [-Wconversion]
-D:\MyGit\apue\fs\mydu.c(55,9): warning :   sum += statres.st_blocks;
-D:\MyGit\apue\fs\mydu.c(55,9): warning :          ^~~~~~~
+  fibonacci.c
+D:\MyGit\apue\array\fibonacci.c(35,5): warning : this ‘for’ clause does not guard... [-Wmisleading-indentation]
+D:\MyGit\apue\array\fibonacci.c(35,5): warning :      for (i = 0; i < sizeof(fib) / sizeof(fib[0]); i++)
+D:\MyGit\apue\array\fibonacci.c(35,5): warning :      ^~~
+D:\MyGit\apue\array\fibonacci.c(37,2): message : ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+D:\MyGit\apue\array\fibonacci.c(37,2): message :   printf("\n");
+D:\MyGit\apue\array\fibonacci.c(37,2): message :   ^~~~~~
   正在链接对象
   apue.vcxproj -> D:\MyGit\apue\bin\x64\Debug\apue.out

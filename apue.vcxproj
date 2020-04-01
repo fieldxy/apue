@@ -34,6 +34,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="array\fibonacci.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{f9793caf-f0c1-4d73-80bf-90456c2f7d53}</ProjectGuid>
     <Keyword>Linux</Keyword>
@@ -74,9 +77,6 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
-  <ItemGroup>
-    <ClCompile Include="fs\mydu.c" />
-  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
