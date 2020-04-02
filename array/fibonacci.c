@@ -11,10 +11,33 @@
 
 #define N 10
 
+static void sort2(void)
+{
+    int i,j,tmp;
+    static int sort[N] = {12,6,7,3,8,13,2,2,22,55};
+
+    printf("\n");
+    for(i = 0; i < N; i++)
+        printf("%d ",sort[i]);
+    printf("\n");
+    for(i = 0; i < N-1; i++){
+        for(j = i+1; j < N-1; j++){
+            if(sort[j] < sort[i]){
+                tmp = sort[j];
+                sort[j] = sort[i];
+                sort[i] = tmp;
+            }
+        }
+    }
+    for(i = 0; i < N; i++)
+        printf("%d ",sort[i]);
+    printf("\n");
+}
+
 static void sort1(void)
 {
     int i,j,tmp;
-    int sort[N] = {12,6,7,3,8,13,2,0,22,55};
+    static int sort[N] = {12,6,7,3,8,13,2,2,22,55};
 
     for(i = 0; i < N; i++)
         printf("%d ",sort[i]);
@@ -71,6 +94,7 @@ static int fibonacci(void)
 
 int main() {
     sort1();
+    sort2();
     fibonacci();
     return 0;
 }
