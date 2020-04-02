@@ -11,6 +11,54 @@
 
 #define N 10
 
+static void primer(void)
+{
+    char primer[1001]={0};
+    int i,j;
+    for(i = 2; i < 1001; i++)
+    {
+        if(primer[i] == 0){
+            for(j = i*2; j < 1001; j+=i){
+                primer[j] = -1;
+            }
+        }
+    }
+
+    for(i = 2; i < 1001; i++)
+        if(primer[i] == 0)
+            printf("%d is a primer .\n",i);
+    printf("\n");
+}
+
+static void base_convert(void)
+{
+    int num,base;
+    int cha_arr[128] ;
+    int i,tmp,j;
+    printf("please input convert num = ");
+    scanf("%d",&num);
+    printf("please input base = ");
+    scanf("%d",&base);
+    
+    printf("num = %d, base = %d\n",num,base);
+
+    for(i=0; num != 0; i ++){
+        cha_arr[i] = num % base;
+        num = num / base;
+    }
+
+    printf("i = %d, j = %d \n",i,j);
+    for(i--;i >= 0; i--){
+        if(cha_arr[i] >= 10)
+            printf("%c ",cha_arr[i]- 10 + 'A');
+        else
+            printf("%d ",cha_arr[i]);
+    }
+
+    printf("\n");
+}
+
+
 static void sort2(void)
 {
     int i,j,tmp;
@@ -93,8 +141,13 @@ static int fibonacci(void)
 }
 
 int main() {
+#if 0
     sort1();
     sort2();
     fibonacci();
+    base_convert();
+#endif
+
+    primer();
     return 0;
 }
