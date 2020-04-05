@@ -12,10 +12,15 @@
 
 int main(void)
 {
-    int *p = NULL;
-    void *q = NULL; /*百搭类型*/
+    // int *p = NULL;
+    int a[3] = {1,2,3};
 
-    printf("%p ---> %d\n",p,*p);
+    // int *q = (int *)0x7fffcf137b0c; /*百搭类型*/
+    int *q = a +4; /*百搭类型*/
+    // int *q = a; /*百搭类型*/
+
+    *q = 2345;
+    printf("%p ---> %d\n",q,*q);
 
     exit(0);
 
