@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-07 23:38:37
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-07 23:49:10
+ * @LastEditTime : 2020-04-08 09:33:00
  * @Description  : In User Settings Edit
  * @FilePath     : /root/MyGit/apue/func/douarr.c
  */
@@ -20,7 +20,7 @@ float average_score(int *p, int n)
         sum += p[i];
     return sum/n;
 }
-
+#if 0
 void find_num(int (*p)[N],int num)
 {
     int i;
@@ -29,6 +29,19 @@ void find_num(int (*p)[N],int num)
     }
     printf("\n");
 }
+#endif
+
+int * find_num(int (*p)[N],int num)
+{
+    // int i;
+    // for(i = 0; i < N; i++){
+    //     printf("%d ",*(*(p+num) + i));
+    // }
+    if(num < M-1)
+        return NULL;
+
+    return *(p +num);
+}
 
 int main()
 {
@@ -36,10 +49,15 @@ int main()
     
     int a[M][N] = {1,2,3,4,5,6,7,8,9,10,11,12};
     int num = 1;
-
+    int *res;
     printf("average = %f\n",average_score(*a,M*N));
 
-    find_num(a,num);
+    res = find_num(a,num);
 
+    if(res != NULL){
+        for(i = 0; i < N; i++)
+            printf("%d ",*(res+i));
+        printf("\n");
+    }
     return 0;
 }
