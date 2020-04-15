@@ -1,13 +1,33 @@
 /*
  * @Author       : field
  * @Date         : 2020-03-31 18:03:34
- * @LastEditTime : 2020-04-01 15:30:10
- * @LastEditors  : field
- * @FilePath     : \apue\array\fibonacci.c
+ * @LastEditTime : 2020-04-15 12:05:17
+ * @LastEditors  : fieldxy
+ * @FilePath     : \undefinedc:\MyGit\apue\array\fibonacci.c
  * @Description  : fibonacci数列
  */
 #include <stdio.h>
 #include <string.h>
+
+#define N 10
+
+static void sort1(void)
+{
+    int tmp,i,j;
+    int a[N] = {5,3,6,1,7,8,9,2,4,11};
+    
+    for()
+
+    for ( i= 0; i < N-1; i++){
+        for( j= 0; j < N-1-i; j++){
+            if(a[j] > a[j+1]){
+                tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+        }
+    }
+}
 
 static int fibonacci(void)
 {
