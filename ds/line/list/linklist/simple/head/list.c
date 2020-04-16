@@ -2,9 +2,9 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-11 16:39:04
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-15 11:58:56
+ * @LastEditTime : 2020-04-16 18:19:28
  * @Description  : In User Settings Edit
- * @FilePath     : /root/MyGit/apue/ds/line/list/linklist/simple/head/list.c
+ * @FilePath     : \apue\ds\line\list\linklist\simple\head\list.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,20 +24,28 @@ list *list_creat()
 int list_insert_at(list *me,int i,datatype *data)
 {
     int j = 0;
-    list * node;
+    list * node = me;
     list * newnode;
 
     if( i < 0)
         return -1;
 
-    while(j < i && node != NULL){
+    while((j < i) && (node != NULL)){
         node = node->next;
         j++;
     }
 
-    if(node){
+    if(j == 0){
         newnode = malloc(sizeof(*newnode));
-        if(newnode )
+        if(newnode == NULL)
+            return -2;
+        newnode ->data = *data;
+        newnode ->next = node->next;
+    }
+
+    if(node != NULL){
+        newnode = malloc(sizeof(*newnode));
+        if(newnode == NULL)
             return -2; 
         newnode ->data = *data;   
         newnode ->next = node->next;
@@ -67,9 +75,43 @@ int list_order_insert(list *me,datatype *data)
     
 }
 
-int list_delete_at(list *me, int i, datatype *data);
+int list_delete_at(list *me, int i, datatype *data)
+{
+    list * p = me, *q;
+    *data = -1;
+    int j = 0;
+    while (j < i && p)
+    {
+        p = p->next;
+        j++;
+    }
 
-int list_delete(list *me,datatype *data);
+    if(p->next == NULL)
+        return -2;
+    q = p->next;
+    p->next = q->next;
+    *data = q->data;
+    free(q);
+    q = NULL;
+    
+    return 0;
+}
+
+int list_delete(list *me,datatype *data)
+{
+    list * p = me, *q;
+
+    while(p->next && p->next->data != *data)
+        p = p->next;
+    
+    if(p->next == NULL)
+        return -1;
+    q = p->next;
+    p->next = q->next;
+    free(q);
+    q = NULL;
+    return 0;
+}
 
 int list_isempty(list *me)
 {
@@ -81,10 +123,10 @@ int list_isempty(list *me)
 
 int list_display(list *me)
 {
-    int i;
-    list * node = me->next;
+    list * node = me;
     if(list_isempty(me) == 0)
         return 0;
+    node = node ->next;
     while (node != NULL)
     {
         printf("%d ",node->data);

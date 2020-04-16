@@ -2,9 +2,9 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-11 16:39:12
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-11 17:41:09
+ * @LastEditTime : 2020-04-16 18:04:17
  * @Description  : In User Settings Edit
- * @FilePath     : /root/MyGit/apue/ds/line/list/linklist/simple/head/list.h
+ * @FilePath     : \apue\ds\line\list\linklist\simple\head\list.h
  */
 #ifndef LIST_H__
 #define LIST_H__
