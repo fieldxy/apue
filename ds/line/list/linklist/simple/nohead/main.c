@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-26 15:31:54
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-27 21:43:48
+ * @LastEditTime : 2020-04-27 22:39:09
  * @Description  : In User Settings Edit
  * @FilePath     : /apue/ds/line/list/linklist/simple/nohead/main.c
  */
@@ -24,7 +24,21 @@ int main()
             exit(1);
     }
     list_display(list);
-    
+
+    int id = 3;
+    struct score_st *ptr;
+    ptr = list_fine(list,id);
+    if(ptr == NULL)
+        printf("con not find!\n");
+    else
+        printf("%d %s %d %d",ptr->id,ptr->name,ptr->math,ptr->chinese);
+
+    list_destory(list);
+
+#if 0    
+    list_delete(&list);
+    list_display(list);
+#endif
     exit(0);
 }
 

@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-26 15:31:49
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-27 21:42:12
+ * @LastEditTime : 2020-04-27 22:34:36
  * @Description  : In User Settings Edit
  * @FilePath     : /apue/ds/line/list/linklist/simple/nohead/list.h
  */
@@ -35,7 +35,11 @@ int list_insert(struct node_st **,struct score_st *data);
 #endif
 int list_display(struct node_st *me);
 
-
-
-
+int list_delete(struct node_st **me);
+#if 0
+int list_fine(struct node_st * me,int id);
+#else 
+struct score_st * list_fine(struct node_st * me, int id);
+#endif
+int list_destory(struct node_st *);
 #endif
