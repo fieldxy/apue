@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-04-26 15:31:44
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-04-27 22:41:19
+ * @LastEditTime : 2020-04-27 23:00:05
  * @Description  : In User Settings Edit
  * @FilePath     : /apue/ds/line/list/linklist/simple/nohead/list.c
  */
@@ -98,7 +98,7 @@ int list_destory(struct node_st * me)
     
     for(list = me; list != NULL; list = me)
     {
-        me = list -> next;
+        list = me -> next;
         free(me);
     }
     return 0;
