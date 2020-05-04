@@ -2,21 +2,24 @@
  * @Author       : fieldxy
  * @Date         : 2020-05-03 20:58:13
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-05-03 21:02:12
+ * @LastEditTime : 2020-05-03 22:46:55
  * @Description  : In User Settings Edit
- * @FilePath     : /apue/ds/line/squeue/list/queue.h
+ * @FilePath     : \apue\ds\line\squeue\list\queue.h
  */
 #ifndef QUEUE_H__
 #define QUEUE_H__
 
+#include "llist.h"
 
-queue_create();
+typedef LLIST  QUEUE;
 
-queue_en();
+QUEUE *queue_create(int );
 
-queue_de();
+int queue_en(QUEUE *,const void *);
 
-queue_destory();
+int queue_de(QUEUE *,void *);
+
+void queue_destory(QUEUE *);
 
 
 #endif
