@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-05-06 12:54:07
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-05-25 11:56:19
+ * @LastEditTime : 2020-05-25 21:26:20
  * @Description  : In User Settings Edit
  * @FilePath     : \apue\ds\tree\btree\tree.c
  */
@@ -83,6 +83,8 @@ void draw_(struct node_st * root,int level)
 void draw(struct node_st *root)
 {
     draw_(root,0);
+    printf("\n\n");
+    getchar();
     
 }
 int get_num(struct node_st *root)
@@ -108,7 +110,7 @@ void turn_left(struct node_st **root)
     *root = cur ->right;
     cur->right = NULL;
     find_min(*root) ->light = cur;
-    
+    draw(*root);
 }
 static struct node_st * find_max(struct node_st *root)
 {
@@ -124,6 +126,7 @@ void turn_right(struct node_st **root)
     *root = cur ->light;
     cur->light = NULL;
     find_max(*root) ->right = cur;
+    draw(*root);
 }
 
 void balance(struct node_st **root)
