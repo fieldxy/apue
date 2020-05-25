@@ -2,9 +2,9 @@
  * @Author       : fieldxy
  * @Date         : 2020-05-06 12:54:07
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-05-20 14:31:32
+ * @LastEditTime : 2020-05-25 11:56:19
  * @Description  : In User Settings Edit
- * @FilePath     : \apue\home\fieldan\MyGit\apue\ds\tree\btree\tree.c
+ * @FilePath     : \apue\ds\tree\btree\tree.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,7 +85,70 @@ void draw(struct node_st *root)
     draw_(root,0);
     
 }
+int get_num(struct node_st *root)
+{
+    int num;
+    if(root == NULL)
+        return 0;
 
+    return get_num(root->right) + 1 +get_num(root->light);
+       
+}
+static struct node_st * find_min(struct node_st *root)
+{
+    if(root->light ==NULL)
+        return root;
+    return find_min(root->light);
+}
+void turn_left(struct node_st **root)
+{
+    if(*root == NULL)
+        return ;
+    struct node_st *cur = *root;
+    *root = cur ->right;
+    cur->right = NULL;
+    find_min(*root) ->light = cur;
+    
+}
+static struct node_st * find_max(struct node_st *root)
+{
+    if(root->light ==NULL)
+        return root;
+    return find_max(root->right);
+}
+void turn_right(struct node_st **root)
+{
+    if(*root == NULL)
+        return ;
+    struct node_st *cur = *root;
+    *root = cur ->light;
+    cur->light = NULL;
+    find_max(*root) ->right = cur;
+}
+
+void balance(struct node_st **root)
+{
+    int sub;
+    if(*root == NULL)
+        return ;
+    while(1)
+    {
+        sub = get_num((*root) ->light) - get_num((*root)->right);
+        // printf("%d %d %d\n",sub,get_num((*root)->light),get_num((*root)->right));
+        if(sub >= -1 && sub <= 1)
+            return ;
+        if(sub < -1)
+            turn_left(root);
+        else
+        {
+            turn_right(root);
+        }
+    }
+    balance(&(*root)->light);
+    balance(&(*root)->right);
+
+    
+}
 int main()
 {
     int arr[] = {1,2,3,7,8,9,4,5};
@@ -108,6 +171,10 @@ int main()
     else
         print_s(datap);
 #endif
+    draw(tree);
+
+    balance(&tree);
+    
     draw(tree);
     
     exit(1);
