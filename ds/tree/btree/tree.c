@@ -2,7 +2,7 @@
  * @Author       : fieldxy
  * @Date         : 2020-05-06 12:54:07
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-05-25 21:26:20
+ * @LastEditTime : 2020-05-27 21:23:34
  * @Description  : In User Settings Edit
  * @FilePath     : \apue\ds\tree\btree\tree.c
  */
@@ -84,7 +84,7 @@ void draw(struct node_st *root)
 {
     draw_(root,0);
     printf("\n\n");
-    getchar();
+    // getchar();
     
 }
 int get_num(struct node_st *root)
@@ -110,7 +110,7 @@ void turn_left(struct node_st **root)
     *root = cur ->right;
     cur->right = NULL;
     find_min(*root) ->light = cur;
-    draw(*root);
+    // draw(*root);
 }
 static struct node_st * find_max(struct node_st *root)
 {
@@ -126,7 +126,7 @@ void turn_right(struct node_st **root)
     *root = cur ->light;
     cur->light = NULL;
     find_max(*root) ->right = cur;
-    draw(*root);
+    // draw(*root);
 }
 
 void balance(struct node_st **root)
@@ -152,6 +152,37 @@ void balance(struct node_st **root)
 
     
 }
+void delete(struct node_st **root,int id)
+{
+    struct node_st **node = root;
+    struct node_st *cur =NULL;
+
+    while(*node != NULL && (*node)->data.id != id)
+    {
+        if(id < (*node)->data.id)
+            node = &(*node)->light;
+        else
+        {
+            node = &(*node)->right;
+        }
+    }
+
+    if(*node == NULL)
+        return;
+    
+    cur = *node;
+
+    if(cur->light == NULL)
+        *node = cur->right;
+    else
+    {
+        *node = cur->light;
+        find_max(cur->light)->right = cur->right;
+        
+    }
+    free(cur);
+    
+}
 int main()
 {
     int arr[] = {1,2,3,7,8,9,4,5};
@@ -166,7 +197,7 @@ int main()
         
         insert(&tree,&tmp);
     }
-#if 1
+#if 0
     int tmpid = 12;
     datap = find(tree,tmpid);
     if(datap == NULL)
@@ -178,6 +209,10 @@ int main()
 
     balance(&tree);
     
+    draw(tree);
+
+    int tmpid = 5;
+    delete(&tree,tmpid);
     draw(tree);
     
     exit(1);
