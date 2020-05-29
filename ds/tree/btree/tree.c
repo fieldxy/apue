@@ -2,12 +2,13 @@
  * @Author       : fieldxy
  * @Date         : 2020-05-06 12:54:07
  * @LastEditors  : fieldxy
- * @LastEditTime : 2020-05-27 21:23:34
+ * @LastEditTime : 2020-05-29 10:02:20
  * @Description  : In User Settings Edit
  * @FilePath     : \apue\ds\tree\btree\tree.c
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 
 #define NAMESIZE 32
 
@@ -183,6 +184,44 @@ void delete(struct node_st **root,int id)
     free(cur);
     
 }
+#if 0
+void travel(struct node_st *root)
+{
+    if (root == NULL)
+        return;
+    print_s(&root->data);
+    travel(root->light);
+    travel(root->right);
+    
+}
+#else
+void travel(struct node_st *root)
+{
+    QUEUE *qu;
+    struct node_st *cur;
+    int ret;
+    qu = queue_create(sizeof(struct node_st *));
+    if(qu == NULL)
+        return ;
+    queue_en(qu,&root);
+    /*if error*/
+    while (1)
+    {
+        ret = queue_de(qu,&cur);
+        if(ret == -1)
+            break;
+        print_s(&cur->data);
+
+        if(cur->light != NULL)
+            queue_en(qu,&cur->light);
+        if(cur->right != NULL)
+            queue_en(qu,&cur->right);
+    }
+    
+    
+
+}
+#endif
 int main()
 {
     int arr[] = {1,2,3,7,8,9,4,5};
@@ -205,6 +244,7 @@ int main()
     else
         print_s(datap);
 #endif
+    travel(tree);
     draw(tree);
 
     balance(&tree);
@@ -214,7 +254,7 @@ int main()
     int tmpid = 5;
     delete(&tree,tmpid);
     draw(tree);
-    
+    travel(tree);
     exit(1);
    
 }
