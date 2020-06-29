@@ -1,8 +1,8 @@
 /*
  * @Author       : fieldxy
  * @Date         : 2020-03-14 12:55:26
- * @LastEditors  : fieldxy
- * @LastEditTime : 2020-03-14 18:02:01
+ * @LastEditors  : field
+ * @LastEditTime : 2020-06-28 21:06:17
  * @Description  : In User Settings Edit
  * @FilePath     : /linux_c/apue/stdio/io/getline.c
  */
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
         if(getline(&linebuf,&linesize,fp) < 0)
             break;
         printf("%ld\n",strlen(linebuf));
-        printf("%d\n",linesize);
+        printf("%ld\n",linesize);
         
     }
     
