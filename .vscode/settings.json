@@ -4,6 +4,9 @@
         "limits": "c",
         "cerrno": "c",
         "cstdio": "c",
-        "fstream": "c"
+        "fstream": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "sstream": "c"
     }
 }
