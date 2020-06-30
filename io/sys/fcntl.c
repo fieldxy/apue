@@ -2,7 +2,7 @@
  * @Author       : field
  * @Date         : 2020-06-30 17:35:48
  * @LastEditors  : field
- * @LastEditTime : 2020-06-30 17:50:15
+ * @LastEditTime : 2020-06-30 17:54:58
  * @Description  : file content
  * @FilePath     : /apue/io/sys/fcntl.c
  */ 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     
     if((val = fcntl(atoi(argv[1]), F_GETFL, 0)) < 0)
         perror("fcntl()");
-    
+    printf("val = %x\n",val);
     switch (val & O_ACCMODE)
     {
     case O_RDONLY:
